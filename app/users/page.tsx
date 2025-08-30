@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import './userPages.model.css';
 
 export default function UsersPage() {
     const [email, setEmail] = useState('');
