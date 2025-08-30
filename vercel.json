@@ -81,10 +81,5 @@
     "env": {
       "SENTRY_AUTH_TOKEN": "@sentry_auth_token"
     }
-  },
-  "production": {
-    "env": {
-      "NEXT_PUBLIC_ENV": "production"
-    }
   }
 }
