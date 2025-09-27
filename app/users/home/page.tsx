@@ -19,9 +19,11 @@ export default function Home() {
                 A todo list app is a digital task management tool designed to help
                 users organize and prioritize their daily activities and responsibilities.
             </p>
-            <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg transition-colors mb-4">
-                <Link href="./register">Get Started </Link>
-            </button>
+            <Link href="./register" className="block w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg transition-colors mb-4 text-center">
+                {/* <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg transition-colors mb-4"> */}
+                Get Started
+                {/* </button> */}
+            </Link>
             <p className="text-center">
                 Already have an account?{" "}
                 <Link href="./login" className="text-blue-500 hover:underline">

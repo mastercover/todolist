@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ProductCard from "./components/ProductCard/ProductCard";
 
 export default function Home() {
     return (
@@ -32,10 +31,6 @@ export default function Home() {
                     >
                         ⚙️ Test useMemo
                     </Link>
-                </div>
-
-                <div className="mt-10">
-                    <ProductCard />
                 </div>
             </section>
         </main>
