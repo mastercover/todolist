@@ -18,6 +18,7 @@ export default function RegisterPage() {
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
     const [showPassword, setShowPassword] = React.useState(false);
+    const [showRePassword, setReShowPassword] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
     const [message, setMessage] = React.useState<string | null>(null);
@@ -77,7 +78,7 @@ export default function RegisterPage() {
 
         setLoading(true);
         try {
-            const res = await fetch('http://localhost:8080/api/auth/register', {
+            const res = await fetch('http://localhost:8080/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password, lastName, firstName }),
@@ -142,7 +143,7 @@ export default function RegisterPage() {
                 <div className="relative w-full mb-[10px]">
                     <input
                         type={showPassword ? 'text' : 'password'}
-                        placeholder="Ít nhất 8 ký tự"
+                        placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
@@ -168,16 +169,33 @@ export default function RegisterPage() {
                     </div>
                 )}
 
-                <input
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Nhập lại mật khẩu"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                    className="w-full border border-gray-400 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
+                <div className="relative w-full mb-[10px]">
 
-                <div className={`absolute inset-y-0 right-[10px] flex items-center bg-blue-50 h-[50px] top-[50%] transition-opacity ${isfocus ? 'opacity-100' : 'opacity-0'}`}>
+                    <input
+                        type={showRePassword ? 'text' : 'password'}
+                        placeholder="Nhập lại mật khẩu"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                        className="w-full border border-gray-400 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    />
+                    <button
+                        type="button"
+                        onClick={() => setReShowPassword(!showRePassword)}
+                        className="absolute inset-y-0 right-3 flex items-center text-gray-600 hover:text-gray-800">
+                        {showRePassword ? (
+                            <VisibilityOffIcon className="h-5 w-5" />
+                        ) : (
+                            <VisibilityIcon className="h-5 w-5" />
+                        )}
+                    </button>
+                </div>
+                {/* <div className={`absolute inset-y-0 right-[10px] flex items-center bg-blue-50 h-[50px] top-[50%] transition-opacity ${isfocus ? 'opacity-100' : 'opacity-0'}`}> */}
+                <div
+                    className={`absolute inset-y-0 right-[10px] flex items-center bg-blue-50 h-[50px] top-[50%] transition-opacity ${isfocus ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    style={{ pointerEvents: "none" }}
+                >
                     <div className="top-full left-0 mt-2 w-64 bg-gray-800 text-white text-sm rounded-lg px-3 py-2 shadow-lg">
                         🔒 Password must:
                         {checkPasswords.map((item, idx) => (
@@ -245,6 +263,6 @@ export default function RegisterPage() {
                     Sign In
                 </Link>
             </p>
-        </LoginLayout>
+        </LoginLayout >
     );
 }
